@@ -27,7 +27,10 @@ int main()
     if (flag == 1)
     {
         rechnung();
-        ausgabe();
+        if (flag == 1)
+        {
+            ausgabe();
+        }
     }
 
     return 0; // Rueckgabe 0, alles ok
@@ -38,17 +41,36 @@ void eingabe()
     // eingabeteil
     printf("bitte geben sie den Zähler der erste Zahl ein:");
     is_correct[0] = scanf("%i", &first_number[1]);
-    printf("bitte geben sie den Nenner der ersten Zahl ein:");
-    is_correct[1] = scanf("%i", &first_number[2]);
-    getchar(); // um zu verhindern das er enter als char erkennt
-    printf("bitte geben sie eine rechenoperation ein (Mögliche Eingabe: +,-,*,/)");
-    is_correct[2] = scanf("%c", &operation);
-    printf("bitte geben sie den Zähler zweiten Zahl ein:");
-    is_correct[3] = scanf("%i", &second_number[1]);
-    printf("bitte geben sie den Nenner der zweiten Zahl ein:");
-    is_correct[4] = scanf("%i", &second_number[2]);
 
-    if (is_correct[0] == 1 && is_correct[1] == 1 && is_correct[2] == 1 && is_correct[3] == 1 && is_correct[4] == 1 && (operation == '+' || operation == '-' || operation == '*' || operation == '/')&&(first_number[2]!=0&&second_number[2]!=0))
+    if (is_correct[0] == 1 && getchar() == '\n')
+    {
+        printf("bitte geben sie den Nenner der ersten Zahl ein:");
+        is_correct[1] = scanf("%i", &first_number[2]);
+
+        if (is_correct[1] == 1 && getchar() == '\n')
+        {
+            printf("bitte geben sie eine rechenoperation ein (Mögliche Eingabe: +,-,*,/)");
+            is_correct[2] = scanf("%c", &operation);
+
+            if (is_correct[2] == 1 && getchar() == '\n')
+            {
+                printf("bitte geben sie den Zähler zweiten Zahl ein:");
+                is_correct[3] = scanf("%i", &second_number[1]);
+
+                if (is_correct[3] == 1 && getchar() == '\n')
+                {
+                    printf("bitte geben sie den Nenner der zweiten Zahl ein:");
+                    is_correct[4] = scanf("%i", &second_number[2]);
+                }
+                if (is_correct[4] != 1 || getchar() != '\n')
+                {
+                    printf("eingabe falsch \n");
+                    return 0;
+                }
+            }
+        }
+    }
+    if (is_correct[0] == 1 && is_correct[1] == 1 && is_correct[2] == 1 && is_correct[3] == 1 && is_correct[4] == 1 && (operation == '+' || operation == '-' || operation == '*' || operation == '/') && (first_number[2] != 0 && second_number[2] != 0))
     {
         flag = 1;
         printf("eingabe korrekt\n");
@@ -88,8 +110,16 @@ void rechnung()
         break;
 
     case '/':
-        ergebnis[1] = first_number[2] * second_number[1];
-        ergebnis[2] = first_number[1] * second_number[2];
+        if (second_number[1] != 0)
+        {
+            ergebnis[1] = first_number[2] * second_number[1];
+            ergebnis[2] = first_number[1] * second_number[2];
+        }
+        else
+        {
+            printf("aber teilung durch 0 nicht möglich");
+            flag = 0;
+        }
         break;
     }
 }
