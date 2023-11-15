@@ -16,7 +16,8 @@ int main() {
   while (wert/divisor!=1) {
     if (wert % divisor==0)
     {printf("%i",divisor);
-        wert=wert/divisor;}
+    printf("*");
+    wert=wert/divisor;}
     if (wert%divisor !=0)
     {divisor++;}
   }
