@@ -11,7 +11,7 @@ int main() {
   eingabekorrekt=scanf("%i", &limit);
   // überprüfen ob eingabe passt
   if (eingabekorrekt!=1 || getchar()!= '\n')
-  {printf("Fehler:eingabe ist keine natürliche zahl");
+  {printf("Fehler: Eingabe ist keine natürliche zahl");
   return -1;}
   if (limit <= 1) {
     printf("Fehler: eingegebene Zahl <= 1");
@@ -21,19 +21,20 @@ int main() {
   printf("bitte geben sie die untere grenze des Bereichs an: \n");
   eingabekorrekt=scanf("%i", &wert);
   // überprüfen ob eingabe passt
-  if (eingabekorrekt!=1 || getchar()!= '\n')
-  {printf("Fehler:eingabe ist keine natürliche zahl");
+  if(eingabekorrekt!=1||getchar()!='\n')
+  {printf("Fehler: Eingabe ist keine natürliche Zahl");
+  return -1;}
   if (wert <= 1) {
     printf("Fehler: eingegebene Zahl <= 1");
-    return -1;
-  }
+    return -1;}
+  
 
 while (wert<limit)
 {printf("%i:\n",wert);
   rechnung(wert);
   wert++;}
 
-}}
+}
 
 int rechnung (wert)
 {   unsigned long int divisor=2;
