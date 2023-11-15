@@ -3,17 +3,35 @@
 #include <stdlib.h>
 
 int main() {
-  int wert;
-  int divisor =2;
-
-  printf("bitte geben sie eine Natürliche Zahl ein \n");
+  unsigned long int wert;
+  unsigned long int limit;
+  //oberes limit
+  printf("bitte geben sie die obere grenze des Bereichs an: \n");
+  scanf("%i", &limit);
+  // überprüfen ob eingabe passt
+  if (limit <= 1) {
+    printf("Fehler: eingegebene Zahl <= 1");
+    return -1;
+  }
+  //unteres limit
+  printf("bitte geben sie die untere grenze des Bereichs an: \n");
   scanf("%i", &wert);
   // überprüfen ob eingabe passt
   if (wert <= 1) {
     printf("Fehler: eingegebene Zahl <= 1");
     return -1;
   }
-  while (wert/divisor!=1) {
+
+while (wert<limit)
+{printf("%i:\n",wert);
+  rechnung(wert);
+  wert++;}
+
+}
+
+int rechnung (wert)
+{   unsigned long int divisor=2;
+    while (wert/divisor!=1) {
     if (wert % divisor==0)
     {printf("%i",divisor);
     printf("*");
@@ -21,5 +39,4 @@ int main() {
     if (wert%divisor !=0)
     {divisor++;}
   }
-  printf("%i", wert);
-}
+  printf("%i\n", wert);}
