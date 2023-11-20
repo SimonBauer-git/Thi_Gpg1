@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int rechnung (int wert);
+
 int main()
 {
   unsigned long int wert;
