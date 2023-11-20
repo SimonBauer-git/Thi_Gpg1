@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,7 +43,7 @@ int main()
   }
 }
 
-int rechnung(wert)
+int rechnung(int wert)
 {
   unsigned long int divisor = 2;
   while (wert / divisor != 1)
