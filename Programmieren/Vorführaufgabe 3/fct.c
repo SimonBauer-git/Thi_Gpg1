@@ -2,16 +2,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int fct(int n, int a, int b, int g, int *rückgabe, char *zeichen) {
-  *rückgabe =200;
-  *zeichen='H';
+int fct(int x, int n) {
+  switch (n) {
+  case 1:
+    return 2*x-4;
+    break;
+  case 2:
+    return (1/7)+(1/x);
+    break;
+  case 3:
+  printf("3");
+    break;
+  case 4:
+  printf("4");
+    break;
+  case 5:
+  printf("5");
+    break;
+  }
+}
+int nullstelle(int n, int a, int b, int g, int *ok, int *x0, int *anzit) {
+  *ok = 2;
+  *x0 = 1;
+  *anzit = 1;
 }
 
 int main() {
-  int *rückgabe;
-  char *zeichen;
-  fct(1, 2, 3, 4, &rückgabe, &zeichen);
-  printf("rückgabe: ");
-  printf("%i", "%i", rückgabe, zeichen);
+  int n, ok, x0, anzit;
+  int fx;
+  fx =fct(1,2);
+  printf("%i", fx);
+  nullstelle(1, 2, 3, 4, &ok, &x0, &anzit);
   return 0;
 }
