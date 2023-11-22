@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float fct(double x, int n)
+float fct(float x, int n)
 {
     switch (n)
     {
@@ -23,24 +23,54 @@ float fct(double x, int n)
         break;
     }
 }
-int nullstelle(int n, int a, int b, int g, int *ok, int *x0, int *anzit)
+int nullstelle(int n, int a, int b, int g, int *x0, int *anzit)
 {
-    *ok = 2;
     *x0 = 1;
     *anzit = 1;
+    float mittelwert = (a + b) / 2;
+    float fx1;
+    float fx2;
+
+    fx1 = fct(a, n);
+    fx2 = fct(b, n);
+    while ((mittelwert - g != 0) || (g - mittelwert != 0))
+    {
+        if ((fx1 < 0 && fx2 < 0) || (fx1 > 0 && fx2 > 0))
+        {
+            mittelwert = (a + b) / 2;
+            fx1 = fct(a, n);
+            fx2 = fct(b, n);
+            
+        }
+    }
 }
 
 int main()
-{
+{ // 1. Aufgabe
     int n, ok, x0, anzit;
-    double fx;
-    double x;
-    prinf("welche Funktion wollen sie berechnen");
+    float fx;
+    float x;
+    printf("welche Funktion wollen sie berechnen\n");
     scanf("%i", &n);
-    prinf("Geben sie einen Wert für x an");
-    scanf("%d", &x);
-    fx = fct(n, x);
-    printf("%d", fx);
-    nullstelle(1, 2, 3, 4, &ok, &x0, &anzit);
+    printf("Geben sie einen Wert für x an\n");
+    scanf("%f", &x);
+    fx = fct(x, n);
+    printf("%f\n", fx);
+
+    // 2. Aufgabe
+    double a, b;
+    int g;
+
+    printf("geben sie die intervallgrenze a ein\n");
+    scanf("%d", &a);
+
+    printf("geben sie die intervallgrenze b ein\n");
+    scanf("%d", &b);
+
+    printf("geben sie die genauigkeit g ein\n");
+    scanf("%d", &g);
+
+    nullstelle(n, a, b, g, &x0, &anzit);
+    printf("ergebnisse sind: %i, %d, %d, %i, %i, %i", n, a, b, g, x0, anzit);
     return 0;
 }
