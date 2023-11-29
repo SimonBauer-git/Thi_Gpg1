@@ -25,7 +25,6 @@ float fct(float x, int n)
 }
 void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
 {
-    *x0 = 1;
     double mittelwert = fabs(a + b) / 2;
     double fx1;
     double fx2;
@@ -47,7 +46,8 @@ void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
         
     *anzit++; }
     *x0 = fabs(a + b) / 2;
-    printf("ergebnisse sind: %d, %i", *x0, *anzit);
+    printf("die Nullstelle liegt bei %d",*x0);
+    printf(", Anzahl der Iterationsschritte: %i", *anzit);
 }
 
 int main()
