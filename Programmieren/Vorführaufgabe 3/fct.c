@@ -23,54 +23,54 @@ float fct(float x, int n)
         break;
     }
 }
-int nullstelle(int n, int a, int b, int g, int *x0, int *anzit)
+void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
 {
     *x0 = 1;
-    *anzit = 1;
-    float mittelwert = (a + b) / 2;
-    float fx1;
-    float fx2;
-
+    double mittelwert = fabs(a + b) / 2;
+    double fx1;
+    double fx2;
     fx1 = fct(a, n);
     fx2 = fct(b, n);
-    while ((mittelwert - g != 0) || (g - mittelwert != 0))
-    {
-        if ((fx1 < 0 && fx2 < 0) || (fx1 > 0 && fx2 > 0))
+    while (g < fabs(b-a))
+    {   fx1 = fct(a, n);
+        fx2 = fct(b, n);
+        mittelwert=fct((fabs(a+b))/2,n);
+        if ((fx1 > 0 && mittelwert < 0)||(fx1 < 0 && mittelwert > 0))       //schauen ob in im interval a mittelwert ein vorzeichenwechsel ist
         {
-            mittelwert = (a + b) / 2;
-            fx1 = fct(a, n);
-            fx2 = fct(b, n);
-            
+            a=mittelwert;
         }
-    }
+
+        if ((fx2 > 0 && mittelwert < 0)||(fx2 < 0 && mittelwert > 0))       //schauen ob in im interval b mittelwert ein vorzeichenwechsel ist
+        {
+            b=mittelwert;
+        }
+        
+    *anzit++; }
+    *x0 = fabs(a + b) / 2;
+    printf("ergebnisse sind: %d, %i", *x0, *anzit);
 }
 
 int main()
 { // 1. Aufgabe
-    int n, ok, x0, anzit;
-    float fx;
-    float x;
+    int n, anzit;
+    double fx, x0;
     printf("welche Funktion wollen sie berechnen\n");
     scanf("%i", &n);
-    printf("Geben sie einen Wert für x an\n");
-    scanf("%f", &x);
-    fx = fct(x, n);
-    printf("%f\n", fx);
 
     // 2. Aufgabe
     double a, b;
-    int g;
+    double g;
 
     printf("geben sie die intervallgrenze a ein\n");
-    scanf("%d", &a);
+    scanf("%i", &a);
 
     printf("geben sie die intervallgrenze b ein\n");
-    scanf("%d", &b);
+    scanf("%i", &b);
 
     printf("geben sie die genauigkeit g ein\n");
-    scanf("%d", &g);
+    scanf("%i", &g);
 
-    nullstelle(n, a, b, g, &x0, &anzit);
-    printf("ergebnisse sind: %i, %d, %d, %i, %i, %i", n, a, b, g, x0, anzit);
+   nullstelle(n, a, b, g, &x0, &anzit);
+    
     return 0;
 }
