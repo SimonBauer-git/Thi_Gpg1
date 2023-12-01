@@ -23,11 +23,12 @@ double fct(double x, int n)
         break;
     }
 }
-void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
+void nullstelle(int n, double a, double b, double g, double *x0, int *anzit, int *ok)
 {
     double mittelwert;
     
-
+    if ((fct(a,n) > 0 && fct(b,n) < 0)||(fct(a,n) < 0 && fct(b,n) > 0))
+    {
     while (fabs(b - a) > g)
     {
         mittelwert = (a + b) / 2;
@@ -50,9 +51,11 @@ void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
 (*x0)=mittelwert;
 
 }
+else
+{(*ok)=0;}}
 
 int main()
-{   int n, anzit;
+{   int n, anzit, ok;
     double a, b, g, x0;
 
     printf("welche Funktion wollen sie berechnen\n");
@@ -66,11 +69,19 @@ int main()
 
     printf("geben sie die genauigkeit g ein\n");
     scanf("%lf", &g);
+    if(a<b)
+    {nullstelle(n, a, b, g, &x0, &anzit, &ok);}                     //erkennt wie das interval eingegeben wurde, ob a oder b die obere grenze ist
 
-    nullstelle(n, a, b, g, &x0, &anzit);
+    if(a>b)
+    {nullstelle(n, b, a, g, &x0, &anzit, &ok);}
 
+    
+    if (ok !=0){
     printf("die Nullstelle liegt bei %lf", x0);
     printf(", Anzahl der Iterationsschritte: %i", anzit);
+    }
     
+    else
+    {printf("keine Nullstelle gefunden");}
     return 0;
 }
