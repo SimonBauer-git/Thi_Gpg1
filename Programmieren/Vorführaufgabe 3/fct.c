@@ -26,9 +26,7 @@ double fct(double x, int n)
 void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
 {
     double mittelwert;
-    a=0;
-    b=16;
-    g=2;
+    
 
     while (fabs(b - a) > g)
     {
@@ -47,11 +45,10 @@ void nullstelle(int n, double a, double b, double g, double *x0, int *anzit)
             a = mittelwert;
         }
 
-       
+    (*anzit)++;
     }
+(*x0)=mittelwert;
 
-    printf("die Nullstelle liegt bei %d", mittelwert);
-    printf(", Anzahl der Iterationsschritte: %i", *anzit);
 }
 
 int main()
@@ -62,15 +59,18 @@ int main()
     scanf("%i", &n);
 
     printf("geben sie die intervallgrenze a ein\n");
-    scanf("%d", &a);
+    scanf("%lf", &a);
 
     printf("geben sie die intervallgrenze b ein\n");
-    scanf("%d", &b);
+    scanf("%lf", &b);
 
     printf("geben sie die genauigkeit g ein\n");
-    scanf("%d", &g);
+    scanf("%lf", &g);
 
     nullstelle(n, a, b, g, &x0, &anzit);
 
+    printf("die Nullstelle liegt bei %lf", x0);
+    printf(", Anzahl der Iterationsschritte: %i", anzit);
+    
     return 0;
 }
