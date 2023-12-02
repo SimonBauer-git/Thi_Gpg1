@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double fct(double x, int n)
+float fct(float x, int n)
 {
     switch (n)
     {
@@ -23,9 +23,9 @@ double fct(double x, int n)
         break;
     }
 }
-void nullstelle(int n, double a, double b, double g, double *x0, int *anzit, int *ok)
+void nullstelle(int n, float a, float b, float g, float *x0, int *anzit, int *ok)
 {
-    double mittelwert;
+    float mittelwert;
     
     if ((fct(a,n) > 0 && fct(b,n) < 0)||(fct(a,n) < 0 && fct(b,n) > 0))
     {
@@ -56,19 +56,19 @@ else
 
 int main()
 {   int n, anzit, ok;
-    double a, b, g, x0;
+    float a, b, g, x0;
 
     printf("welche Funktion wollen sie berechnen\n");
     scanf("%i", &n);
 
     printf("geben sie die intervallgrenze a ein\n");
-    scanf("%lf", &a);
+    scanf("%f", &a);
 
     printf("geben sie die intervallgrenze b ein\n");
-    scanf("%lf", &b);
+    scanf("%f", &b);
 
     printf("geben sie die genauigkeit g ein\n");
-    scanf("%lf", &g);
+    scanf("%f", &g);
     if(a<b)
     {nullstelle(n, a, b, g, &x0, &anzit, &ok);}                     //erkennt wie das interval eingegeben wurde, ob a oder b die obere grenze ist
 
@@ -77,7 +77,7 @@ int main()
 
     
     if (ok !=0){
-    printf("die Nullstelle liegt bei %lf", x0);
+    printf("die Nullstelle liegt bei %f", x0);
     printf(", Anzahl der Iterationsschritte: %i", anzit);
     }
     
