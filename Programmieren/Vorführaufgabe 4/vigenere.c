@@ -1,4 +1,3 @@
-
             // eingabe in zahlen umwandeln, um diese zahlen das alphabet verschieben
             // dann um diese zahl verschieben, buchstabe pro buchstabe
             // dann die eingegebenen buchstaben den auszugebenden buchstaben zuweisen, ebenfalls für jeden buchstaben
@@ -9,7 +8,7 @@
 
 char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
 
-void wort_in_zahlen(char schlüsselwort[], int *eingabe_z[]) //wandle das codewort das eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
+void wort_in_zahlen(char schlüsselwort[], int eingabe_z[]) //wandle das codewort das eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {int z=0;
     while (z < strlen(schlüsselwort))
     {
@@ -22,7 +21,8 @@ void wort_in_zahlen(char schlüsselwort[], int *eingabe_z[]) //wandle das codewo
         }
       
     z++;
-    printf("%i,",i);}
+    printf("%i,",i);
+    eingabe_z[z]=i;}
 }
 
 void entschlüsseln()
@@ -61,4 +61,5 @@ int main()
         printf("ungültige Eingabe");
         return -1;
     }
+
 }
