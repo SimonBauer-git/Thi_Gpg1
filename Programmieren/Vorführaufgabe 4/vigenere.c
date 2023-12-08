@@ -6,6 +6,14 @@
 #include <stdio.h>
 #include <string.h>
 
+int modus;
+
+    char schlüsselwort[10];
+    int eingabe_s[10];
+    
+    char text[99];
+    int eingabe_t[99];
+
 char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
 void schlüsselwort_in_zahlen(char schlüsselwort[], int eingabe_s[]) // wandle das codewort das eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {
@@ -68,14 +76,6 @@ void verschlüsseln(int eingabe_s[], int eingabe_t[])
 
 int main()
 {
-    int modus;
-
-    char schlüsselwort[10];
-    int eingabe_s[10];
-    
-    char text[99];
-    int eingabe_t[99];
-
     printf("was wollen sie tun(1 = verschlüsseln, 2 = entschlüsseln)\n");
     scanf("%i", &modus);
     printf("geben sie das schlüsselwort an\n");
