@@ -1,6 +1,6 @@
 // eingabe in zahlen umwandeln, um diese zahlen das alphabet verschieben erledigt
 // dann um diese zahl verschieben, buchstabe pro buchstabe
-//dann das ganze ausgeben
+// dann die eingegebenen buchstaben den auszugebenden buchstaben zuweisen, ebenfalls für jeden buchstaben
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -56,6 +56,7 @@ void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, dami
 
 void entschlüsseln()
 {
+    printf("%c" ,alphabet[eingabe_t[0]-eingabe_s[0]]);
 }
 
 void verschlüsseln()
