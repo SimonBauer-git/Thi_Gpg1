@@ -6,13 +6,13 @@
 #include <stdio.h>
 #include <string.h>
 
-    int modus;
+int modus;
 
-    char schlüsselwort[10];
-    int eingabe_s[10];
-    
-    char text[99];
-    int eingabe_t[99];
+char schlüsselwort[10];
+int eingabe_s[10];
+
+char text[99];
+int eingabe_t[99];
 
 char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
 void schlüsselwort_in_zahlen()
@@ -28,10 +28,9 @@ void schlüsselwort_in_zahlen()
             i++;
         }
 
-        
-        
         eingabe_s[z] = i;
-    z++;}
+        z++;
+    }
 }
 
 void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
@@ -47,26 +46,31 @@ void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, dami
             i++;
         }
 
-        
         eingabe_t[z] = i;
-    z++;}
-
+        z++;
+    }
 }
-
 
 void entschlüsseln()
 {
-    printf("%c" ,alphabet[eingabe_t[0]-eingabe_s[0]]);
+    printf("%c", alphabet[eingabe_t[0] - eingabe_s[0]]);
 }
 
 void verschlüsseln()
 {
-    printf("%c" ,alphabet[eingabe_s[0]+eingabe_t[0]]);
+    if (eingabe_s[0] + eingabe_t[0] < 27)
+    {
+        printf("%c", alphabet[eingabe_s[0] + eingabe_t[0]]);
+    }
+    else
+    {
+        printf("%c", alphabet[(eingabe_s[0] + eingabe_t[0])-27]);           //loopback wenn die summe größer als 27 ist
+                             
+    }
 }
 
 int main()
 {
-
 
     printf("was wollen sie tun(1 = verschlüsseln, 2 = entschlüsseln)\n");
     scanf("%i", &modus);
@@ -74,19 +78,19 @@ int main()
     scanf("%s", &schlüsselwort);
     printf("schlüsselwort: %s\n", schlüsselwort);
     printf("geben sie den gewünschten text ein:\n");
-    scanf("%s",&text);
+    scanf("%s", &text);
 
     schlüsselwort_in_zahlen();
     text_in_zahlen();
 
     if (modus == 1)
     {
-       
+
         verschlüsseln();
     }
     if (modus == 2)
     {
-       
+
         entschlüsseln();
     }
     if (modus != 2 && modus != 1)
