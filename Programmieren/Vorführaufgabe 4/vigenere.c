@@ -58,15 +58,19 @@ void entschlüsseln()
 
 void verschlüsseln()
 {
-    if (eingabe_s[0] + eingabe_t[0] < 27)
+    if (text[0] != 32)
     {
-        printf("%c", alphabet[eingabe_s[0] + eingabe_t[0]]);
+        if (eingabe_s[0] + eingabe_t[0] < 27)
+        {
+            printf("%c", alphabet[eingabe_s[0] + eingabe_t[0]]);
+        }
+        else
+        {
+            printf("%c", alphabet[(eingabe_s[0] + eingabe_t[0]) - 27]); // loopback wenn die summe größer als 27 ist
+        }
     }
     else
-    {
-        printf("%c", alphabet[(eingabe_s[0] + eingabe_t[0])-27]);           //loopback wenn die summe größer als 27 ist
-                             
-    }
+    {printf(" ");}
 }
 
 int main()
