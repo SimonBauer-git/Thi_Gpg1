@@ -32,7 +32,7 @@ void schlüsselwort_in_zahlen()
 }
 
 void extend()
-{
+{int y=0;
     int z = 0;
 
     while (z < 99)
@@ -40,10 +40,12 @@ void extend()
         int i = 0;
         while (i < strlen(schlüsselwort))
         {
-            eingabe_s_xt[i] = eingabe_s[i];
+            eingabe_s_xt[z] = eingabe_s[i];
             
-        printf("%i, ", eingabe_s_xt[i]);
-        i++;}
+        
+        i++;
+        y++;
+        printf("%i,",z);}
         
         z++;
     }
@@ -55,4 +57,7 @@ int main()
     scanf("%s", &schlüsselwort);
     printf("schlüsselwort: %s\n", schlüsselwort);
     schlüsselwort_in_zahlen();
-}
+    int i;
+while (i<99)
+{printf("%i, ", eingabe_s[i]);
+    i++;}}
