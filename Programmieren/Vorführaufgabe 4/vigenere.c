@@ -53,24 +53,50 @@ void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, dami
 
 void entschlüsseln()
 {
-    printf("%c", alphabet[eingabe_t[0] - eingabe_s[0]]);
+    
+int i = 0;
+    while (i < strlen(text))
+    {
+        if (text[i] != 32)
+        {
+            if (eingabe_s[i] - eingabe_t[i] < 0)
+            {
+                printf("%c", alphabet[eingabe_t[i] - eingabe_s[i]]);
+            }
+            else
+            {
+                printf("%c", alphabet[(eingabe_t[i] - eingabe_s[i]) + 26]); // loopback wenn die summe größer als 27 ist
+            }
+        }
+        else
+        {
+            printf(" ");
+        }
+    i++;}
+
 }
 
 void verschlüsseln()
 {
-    if (text[0] != 32)
+    int i = 0;
+    while (i < strlen(text))
     {
-        if (eingabe_s[0] + eingabe_t[0] < 27)
+        if (text[i] != 32)
         {
-            printf("%c", alphabet[eingabe_s[0] + eingabe_t[0]]);
+            if (eingabe_s[i] + eingabe_t[i] < 27)
+            {
+                printf("%c", alphabet[eingabe_s[i] + eingabe_t[i]]);
+            }
+            else
+            {
+                printf("%c", alphabet[(eingabe_s[i] + eingabe_t[i]) - 26]); // loopback wenn die summe größer als 27 ist
+            }
         }
         else
         {
-            printf("%c", alphabet[(eingabe_s[0] + eingabe_t[0]) - 27]); // loopback wenn die summe größer als 27 ist
+            printf(" ");
         }
-    }
-    else
-    {printf(" ");}
+    i++;}
 }
 
 int main()
