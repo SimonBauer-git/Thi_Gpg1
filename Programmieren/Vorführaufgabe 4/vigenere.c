@@ -34,7 +34,7 @@ void schlüsselwort_in_zahlen()
     }
 extend();}
 
-void extend()
+void extend()//erweitere das schlüsselwort auf 99 zeichen
 {
     int z = 0;
 
@@ -45,7 +45,6 @@ void extend()
         {
             eingabe_s_xt[i] = eingabe_s[i];
             
-        
         i++;}
         
         z++;
