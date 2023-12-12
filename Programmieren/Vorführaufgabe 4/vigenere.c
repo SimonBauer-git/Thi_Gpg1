@@ -9,8 +9,8 @@
 int modus;
 
 char schlüsselwort[9];
-int eingabe_s[9];
-int eingabe_s_xt[99];
+int eingabe_s[99];
+
 
 char text[99];
 int eingabe_t[99];
@@ -32,10 +32,11 @@ void schlüsselwort_in_zahlen()
         eingabe_s[z] = i;
         z++;
     }
-extend();}
+//extend();
+}
 
-void extend()//erweitere das schlüsselwort auf 99 zeichen
-{
+/*void extend()//erweitere das schlüsselwort auf 99 zeichen
+{int y=0;
     int z = 0;
 
     while (z < 99)
@@ -43,14 +44,14 @@ void extend()//erweitere das schlüsselwort auf 99 zeichen
         int i = 0;
         while (i < strlen(schlüsselwort))
         {
-            eingabe_s_xt[i] = eingabe_s[i];
-            
+            eingabe_s[y] = eingabe_s[i];
+        y++;    
         i++;}
         
         z++;
     }
 }
-
+*/
 void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {
     int z = 0;
@@ -77,13 +78,13 @@ void entschlüsseln()
     {
         if (text[i] != 32)
         {
-            if (eingabe_s_xt[i] - eingabe_t[i] < 0)
+            if (eingabe_s[i] - eingabe_t[i] < 0)
             {
-                printf("%c", alphabet[eingabe_t[i] - eingabe_s_xt[i]]);
+                printf("%c", alphabet[eingabe_t[i] - eingabe_s[i]]);
             }
             else
             {
-                printf("%c", alphabet[(eingabe_t[i] - eingabe_s_xt[i]) + 26]); // loopback wenn die summe größer als 27 ist
+                printf("%c", alphabet[(eingabe_t[i] - eingabe_s[i]) + 26]); // loopback wenn die summe größer als 27 ist
             }
         }
         else
@@ -101,13 +102,13 @@ void verschlüsseln()
     {
         if (text[i] != 32)
         {
-            if (eingabe_s_xt[i] + eingabe_t[i] < 27)
+            if (eingabe_s[i] + eingabe_t[i] < 27)
             {
-                printf("%c", alphabet[eingabe_s_xt[i] + eingabe_t[i]]);
+                printf("%c", alphabet[eingabe_s[i] + eingabe_t[i]]);
             }
             else
             {
-                printf("%c", alphabet[(eingabe_s_xt[i] + eingabe_t[i]) - 26]); // loopback wenn die summe größer als 27 ist
+                printf("%c", alphabet[(eingabe_s[i] + eingabe_t[i]) - 26]); // loopback wenn die summe größer als 27 ist
             }
         }
         else
