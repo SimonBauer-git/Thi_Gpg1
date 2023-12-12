@@ -32,14 +32,14 @@ void schlüsselwort_in_zahlen()
         eingabe_s[z] = i;
         z++;
     }
-//extend();
+extend();
 }
 
-/*void extend()//erweitere das schlüsselwort auf 99 zeichen
-{int y=0;
-    int z = 0;
+void extend()//erweitere das schlüsselwort auf 99 zeichen
+{long int y=0;
+    long int z = 0;
 
-    while (z < 99)
+    while (z < 17)
     {
         int i = 0;
         while (i < strlen(schlüsselwort))
@@ -51,7 +51,7 @@ void schlüsselwort_in_zahlen()
         z++;
     }
 }
-*/
+
 void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {
     int z = 0;
