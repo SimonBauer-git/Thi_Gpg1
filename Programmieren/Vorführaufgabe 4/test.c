@@ -40,12 +40,12 @@ void extend()
         int i = 0;
         while (i < strlen(schlüsselwort))
         {
-            eingabe_s_xt[z] = eingabe_s[i];
+            eingabe_s_xt[y] = eingabe_s[i];
             
         
         i++;
         y++;
-        printf("%i,",z);}
+       }
         
         z++;
     }
@@ -59,5 +59,5 @@ int main()
     schlüsselwort_in_zahlen();
     int i;
 while (i<99)
-{printf("%i, ", eingabe_s[i]);
+{printf("%i, ", eingabe_s_xt[i]);
     i++;}}
