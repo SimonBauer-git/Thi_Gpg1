@@ -9,7 +9,7 @@
 int modus;
 
 char schlüsselwort[9];
-int eingabe_s[99];
+int eingabe_s[1000];
 
 
 char text[99];
@@ -39,7 +39,7 @@ void extend()//erweitere das schlüsselwort auf 99 zeichen
 {long int y=0;
     long int z = 0;
 
-    while (z < 17)
+    while (z < 99)
     {
         int i = 0;
         while (i < strlen(schlüsselwort))
