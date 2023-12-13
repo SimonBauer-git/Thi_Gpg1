@@ -83,7 +83,7 @@ void entschlüsseln()
     {
         if (text[i] != 32)
         {
-            if (eingabe_s[i] - eingabe_t[i] < 0)
+            if (eingabe_s[i] - eingabe_t[i] <= 0)
             {
                 printf("%c", alphabet[eingabe_t[i] - eingabe_s[i]]);
             }
