@@ -11,7 +11,6 @@ int modus;
 char schlüsselwort[9];
 int eingabe_s[1000];
 
-
 char text[99];
 int eingabe_t[99];
 
@@ -32,11 +31,12 @@ void schlüsselwort_in_zahlen()
         eingabe_s[z] = i;
         z++;
     }
-extend();
+    extend();
 }
 
-void extend()//erweitere das schlüsselwort auf 99 zeichen
-{long int y=0;
+void extend() // erweitere das schlüsselwort auf 99 zeichen
+{
+    long int y = 0;
     long int z = 0;
 
     while (z < 99)
@@ -45,9 +45,10 @@ void extend()//erweitere das schlüsselwort auf 99 zeichen
         while (i < strlen(schlüsselwort))
         {
             eingabe_s[y] = eingabe_s[i];
-        y++;    
-        i++;}
-        
+            y++;
+            i++;
+        }
+
         z++;
     }
 }
@@ -55,17 +56,21 @@ void extend()//erweitere das schlüsselwort auf 99 zeichen
 void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {
     int z = 0;
+    int y = 0;
     while (z < strlen(text))
     {
-        int i;
-        i = 0;
-        while (i <= 26 && alphabet[i] != text[z])
+        if (text[z] != 32) // überprüfe ob es ein leerzeichen ist
         {
+            int i;
+            i = 0;
+            while (i <= 26 && alphabet[i] != text[z])
+            {
 
-            i++;
+                i++;
+            }
+
+            eingabe_t[z] = i;
         }
-
-        eingabe_t[z] = i;
         z++;
     }
 }
@@ -74,7 +79,7 @@ void entschlüsseln()
 {
 
     int i = 0;
-    while (i < strlen(text))
+    while (i < (strlen(text)-1))
     {
         if (text[i] != 32)
         {
@@ -98,7 +103,7 @@ void entschlüsseln()
 void verschlüsseln()
 {
     int i = 0;
-    while (i < strlen(text))
+    while (i < (strlen(text)-1))
     {
         if (text[i] != 32)
         {
@@ -121,14 +126,14 @@ void verschlüsseln()
 
 int main()
 {
-
     printf("was wollen sie tun(1 = verschlüsseln, 2 = entschlüsseln)\n");
     scanf("%i", &modus);
     printf("geben sie das schlüsselwort an\n");
     scanf("%s", &schlüsselwort);
     printf("schlüsselwort: %s\n", schlüsselwort);
+    getchar();
     printf("geben sie den gewünschten text ein:\n");
-    scanf("%s", &text);
+    fgets(text, sizeof(text), stdin);
 
     schlüsselwort_in_zahlen();
     text_in_zahlen();
