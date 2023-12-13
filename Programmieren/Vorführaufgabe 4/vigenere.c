@@ -1,4 +1,4 @@
-// eingabe in zahlen umwandeln, um diese zahlen das alphabet verschieben erledigt
+// eingabe in zahlen umwandeln, um diese zahlen das alphabet verschieben
 // dann um diese zahl verschieben, buchstabe pro buchstabe
 // dann die eingegebenen buchstaben den auszugebenden buchstaben zuweisen, ebenfalls für jeden buchstaben
 
@@ -6,16 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
-int modus;
-
-char schlüsselwort[9];
-int eingabe_s[1000];
-
-char text[99];
-int eingabe_t[99];
-
 char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
-void schlüsselwort_in_zahlen()
+
+void schlüsselwort_in_zahlen(char schlüsselwort[], char eingabe_s[])
 {
     int z = 0;
     while (z < strlen(schlüsselwort))
@@ -31,10 +24,10 @@ void schlüsselwort_in_zahlen()
         eingabe_s[z] = i;
         z++;
     }
-    extend();
+    extend(schlüsselwort, eingabe_s);
 }
 
-void extend() // erweitere das schlüsselwort auf 99 zeichen
+void extend(char schlüsselwort[], char eingabe_s[]) // erweitere das schlüsselwort auf 99 zeichen
 {
     long int y = 0;
     long int z = 0;
@@ -53,7 +46,7 @@ void extend() // erweitere das schlüsselwort auf 99 zeichen
     }
 }
 
-void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
+void text_in_zahlen(char text[], char eingabe_t[]) // wandle den text der eingegeben wurde in zahlen um, damit man das alphabet shiften kann.
 {
     int z = 0;
     int y = 0;
@@ -75,11 +68,11 @@ void text_in_zahlen() // wandle den text der eingegeben wurde in zahlen um, dami
     }
 }
 
-void entschlüsseln()
+void entschlüsseln(char text[], char eingabe_s[], char eingabe_t[])
 {
 
     int i = 0;
-    while (i < (strlen(text)-1))
+    while (i < (strlen(text) - 1))
     {
         if (text[i] != 32)
         {
@@ -100,10 +93,10 @@ void entschlüsseln()
     }
 }
 
-void verschlüsseln()
+void verschlüsseln(char text[], char eingabe_s[], char eingabe_t[])
 {
     int i = 0;
-    while (i < (strlen(text)-1))
+    while (i < (strlen(text) - 1))
     {
         if (text[i] != 32)
         {
@@ -126,6 +119,12 @@ void verschlüsseln()
 
 int main()
 {
+    int eingabe_t[99];
+    int eingabe_s[1000];
+    char schlüsselwort[9];
+    int modus;
+    char text[99];
+
     printf("was wollen sie tun(1 = verschlüsseln, 2 = entschlüsseln)\n");
     scanf("%i", &modus);
     printf("geben sie das schlüsselwort an\n");
@@ -135,18 +134,18 @@ int main()
     printf("geben sie den gewünschten text ein:\n");
     fgets(text, sizeof(text), stdin);
 
-    schlüsselwort_in_zahlen();
-    text_in_zahlen();
+    schlüsselwort_in_zahlen(schlüsselwort, eingabe_s);
+    text_in_zahlen(text, eingabe_t);
 
     if (modus == 1)
     {
 
-        verschlüsseln();
+        verschlüsseln(text, eingabe_s, eingabe_t);
     }
     if (modus == 2)
     {
 
-        entschlüsseln();
+        entschlüsseln(text, eingabe_s, eingabe_t);
     }
     if (modus != 2 && modus != 1)
     {
